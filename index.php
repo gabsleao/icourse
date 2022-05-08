@@ -2,6 +2,12 @@
 
 <?php include_once __DIR__ . '/config/header.php'; ?>
 
+<style>
+.morecontent span {
+    display: none;
+}
+</style>
+
 <body>
     <div class="container">
     <!-- dinamizar com PHP a partir daqui -->
@@ -18,7 +24,7 @@
 
             <div class="card-body">
               <p class="card-title"><b>Nome do Colégio 1</b></p>
-              <p class="card-text">Nosso compromisso é contribuir para o fortalecimento intelectual e emocional dos nossos alunos, tornando extremamente simples a comunicação deles com pessoas de todas as partes do mundo, através do ensino efetivo original e inovador, capaz de fazer do aprendizado uma experiência única e prazerosa.</p>
+              <p class="card-text more">Nosso compromisso é contribuir para o fortalecimento intelectual e emocional dos nossos alunos, tornando extremamente simples a comunicação deles com pessoas de todas as partes do mundo, através do ensino efetivo original e inovador, capaz de fazer do aprendizado uma experiência única e prazerosa.</p>
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
                   <button type="button" class="btn btn-sm btn-outline-secondary">+ Informações</button>
@@ -40,7 +46,7 @@
 
             <div class="card-body">
               <p class="card-title"><b>Nome do Colégio 2</b></p>
-              <p class="card-text">Nosso compromisso é contribuir para o fortalecimento intelectual e emocional dos nossos alunos, tornando extremamente simples a comunicação deles com pessoas de todas as partes do mundo, através do ensino efetivo original e inovador, capaz de fazer do aprendizado uma experiência única e prazerosa.</p>
+              <p class="card-text more">Nosso compromisso é contribuir para o fortalecimento intelectual e emocional dos nossos alunos, tornando extremamente simples a comunicação deles com pessoas de todas as partes do mundo, através do ensino efetivo original e inovador, capaz de fazer do aprendizado uma experiência única e prazerosa.</p>
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
                   <button type="button" class="btn btn-sm btn-outline-secondary">+ Informações</button>
@@ -62,7 +68,7 @@
 
             <div class="card-body">
               <p class="card-title"><b>Nome do Colégio 3</b></p>
-              <p class="card-text">Nosso compromisso é contribuir para o fortalecimento intelectual e emocional dos nossos alunos, tornando extremamente simples a comunicação deles com pessoas de todas as partes do mundo, através do ensino efetivo original e inovador, capaz de fazer do aprendizado uma experiência única e prazerosa.</p>
+              <p class="card-text more">Nosso compromisso é contribuir para o fortalecimento intelectual e emocional dos nossos alunos, tornando extremamente simples a comunicação deles com pessoas de todas as partes do mundo, através do ensino efetivo original e inovador, capaz de fazer do aprendizado uma experiência única e prazerosa.</p>
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
                   <button type="button" class="btn btn-sm btn-outline-secondary">+ Informações</button>
@@ -87,3 +93,42 @@
 </body>
 
 </html>
+
+<script>
+function AddReadMore() {
+    var maxChars = 160;  // numero maximo de chars pra mostrar texto
+    
+
+    $('.more').each(function() {
+        var texto = $(this).html();
+ 
+        if(texto.length > maxChars) {
+            var mostrar = texto.substr(0, maxChars);
+            var h = texto.substr(maxChars, texto.length - maxChars);
+ 
+            var html = mostrar + '... <span class="morecontent"><span>' + h + '</span><a href="" class="morelink">ler mais</a></span>';
+ 
+            $(this).html(html);
+        }
+ 
+    });
+ 
+    $(".morelink").click(function(){
+        if($(this).hasClass("less")) {
+            $(this).removeClass("less");
+            $(this).html("ler mais");
+        } else {
+            $(this).addClass("less");
+            $(this).html(" ler menos");
+        }
+        $(this).parent().prev().toggle();
+        $(this).prev().toggle();
+        return false;
+    });
+}
+
+$(function() {
+    //Calling function after Page Load
+    AddReadMore();
+});
+</script>
