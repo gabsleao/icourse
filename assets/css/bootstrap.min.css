@@ -9288,4 +9288,21 @@ textarea.form-control-lg{
     margin-top: 25px;
 }
 
+.containerLinha {
+    display: flex;
+    margin-top: 25px;
+}
+
+.linha {
+    width: 100%;
+    position: relative;
+    margin: 15px;
+    border-bottom: 1px solid #000;
+}
+
+.linhaIcon {
+    position: relative;
+    top: 3px;
+}
+
 /*# sourceMappingURL=bootstrap.min.css.map */
