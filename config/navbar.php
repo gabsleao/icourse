@@ -206,7 +206,7 @@
 
 			<!--TODO: adicionar uma animaçãozinha -->
 			<div class="form-inline" id="endereco" onclick="getLocation();" style="cursor: pointer;">
-				<i class="fa fa-map-marker" aria-hidden="true"></i>Adicionar endereço do user
+				<i class="fa fa-map-marker" aria-hidden="true"></i>Usar o meu endereço
 			</div>
 
 			<ul class="nav navbar-nav navbar-right">
