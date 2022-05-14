@@ -8,6 +8,7 @@
 <style>
 	body {
 		background: #eeeeee;
+		padding-top: 70px;
 	}
 
 	.form-inline {
@@ -161,7 +162,7 @@
 </style>
 
 <body>
-	<nav class="navbar navbar-default">
+	<nav class="navbar navbar-default navbar-fixed-top">
 		<div class="navbar-header">
 			<a class="navbar-brand" href="./index.php"><img src="./assets/brand/favicon.svg" height="25px" width="50px"></a>
 			<button type="button" data-target="#navbarCollapse" data-toggle="collapse" class="navbar-toggle">
