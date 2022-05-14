@@ -27,7 +27,7 @@ function showPosition(position) {
         .then(response => response.json())
         .then(function (response) {
             if (response['status'].code != 200) {
-                return div.html("Não foi possível pegar a sua localização ):");
+                return div.html(LOCATION_ICON_HTML + "Não foi possível pegar a sua localização ):");
             }
 
             var components = response['results'][0]['components'];
