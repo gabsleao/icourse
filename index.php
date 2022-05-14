@@ -39,9 +39,9 @@
 
             if (texto.length > maxChars) {
                 var mostrar = texto.substr(0, maxChars);
-                var h = texto.substr(maxChars, texto.length - maxChars);
+                var esconder = texto.substr(maxChars, texto.length - maxChars);
 
-                var html = mostrar + '... <span class="morecontent"><span>' + h + '</span><a href="" class="morelink">ler mais</a></span>';
+                var html = mostrar + '<span class="morecontent"><span>' + esconder + '</span><a href="" class="morelink">... ler mais</a></span>';
 
                 $(this).html(html);
             }
@@ -51,10 +51,10 @@
         $(".morelink").click(function() {
             if ($(this).hasClass("less")) {
                 $(this).removeClass("less");
-                $(this).html("ler mais");
+                $(this).html("... ler mais");
             } else {
                 $(this).addClass("less");
-                $(this).html(" ler menos");
+                $(this).html("<br>ler menos");
             }
             $(this).parent().prev().toggle();
             $(this).prev().toggle();
