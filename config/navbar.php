@@ -159,6 +159,10 @@
 			width: 100%;
 		}
 	}
+
+	.fa-map-marker {
+		margin-right: 10px;
+	}
 </style>
 
 <body>
@@ -200,16 +204,17 @@
 				</div>
 			</form>
 
-			<div class="form-inline">
-				TO-DO: Adicionar endereço do user aqui
+			<!--TODO: adicionar uma animaçãozinha -->
+			<div class="form-inline" id="endereco" onclick="getLocation();" style="cursor: pointer;">
+				<i class="fa fa-map-marker" aria-hidden="true"></i>Adicionar endereço do user
 			</div>
 
 			<ul class="nav navbar-nav navbar-right">
 				<!-- numero de notificações (futuro) -->
-				<li><a href="#" class="notifications"><i class="fa fa-bell-o"></i><span class="badge">1</span></a></li>
+				<li><a href="#" class="notifications"><i class="fa fa-bell-o" aria-hidden="true"></i><span class="badge">1</span></a></li>
 
 				<!-- numero de mensagens (futuro) -->
-				<li><a href="#" class="messages"><i class="fa fa-envelope-o"></i><span class="badge">10</span></a></li>
+				<li><a href="#" class="messages"><i class="fa fa-envelope-o" aria-hidden="true"></i><span class="badge">10</span></a></li>
 
 				<!-- buscar session do user e popular essas infos dinamicamente (entrega futura) -->
 				<li class="dropdown">
