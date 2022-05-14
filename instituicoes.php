@@ -2,12 +2,11 @@
 
   <!-- cada coluna -->
   <div class="col">
-    <div class="card shadow-sm" onClick="openInstituicao(this);" style="cursor: pointer;">
+    <div class="card shadow-sm" onClick="openInstituicao(1);" style="cursor: pointer;">
 
 
       <img width="100%" height="125px" src="./assets/escolas/escola1.png">
       <div class="card-body">
-        <input type="hidden" id="idDoColegio" value="idDoColégio">
         <div class="card-title" id="nomeColegio"><b>Nome do Colégio 1</b></div>
         <div class="card-text more">Nosso compromisso é contribuir para o fortalecimento intelectual e emocional dos nossos alunos, tornando extremamente simples a comunicação deles com pessoas de todas as partes do mundo, através do ensino efetivo original e inovador, capaz de fazer do aprendizado uma experiência única e prazerosa.</div>
         <div class="d-flex justify-content-between align-items-center">

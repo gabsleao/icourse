@@ -1,7 +1,13 @@
 <?php
 include_once __DIR__ . '/config/header.php';
 
-// var_dump($_POST);
+if (!isset($_GET['id']) || strlen($_GET['id']) == 0 || !is_numeric($_GET['id'])) {
+    include_once __DIR__ . '/not_found.html';
+    exit;
+}
+
+$IDColegio = $_GET['id'];
+//implementar lógica de pegar as infos da instituição via banco e popular na tela
 ?>
 <div class="container">
 
