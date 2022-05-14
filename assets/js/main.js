@@ -1,6 +1,6 @@
 //https://opencagedata.com/api
 const API_KEY = "pegar no openCage";
-const LOCATION_ICON_HTML = "<i class=\"fa fa-map-marker\" aria-hidden=\"true\"></i> ";
+const LOCATION_ICON_HTML = "<i class=\"fa fa-map-marker\" aria-hidden=\"true\"></i>";
 
 function openInstituicao(idDoColegio) {
     //abrir a página com get
