@@ -161,7 +161,7 @@
 	}
 
 	.fa-map-marker {
-		margin-right: 10px;
+		margin-right: 7px;
 	}
 </style>
 
