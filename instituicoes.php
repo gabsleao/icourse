@@ -1,3 +1,13 @@
+<?php
+
+$Instituicao = new Instituiçao(1);
+
+if(is_null($Instituicao)){
+  include_once __DIR__ . '/not_found.html';
+  exit;
+}
+
+?>
 <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
 
   <!-- cada coluna -->
@@ -7,8 +17,8 @@
 
       <img width="100%" height="125px" src="./assets/escolas/escola1.png">
       <div class="card-body">
-        <div class="card-title" id="nomeColegio"><b>Nome do Colégio 1</b></div>
-        <div class="card-text more">Nosso compromisso é contribuir para o fortalecimento intelectual e emocional dos nossos alunos, tornando extremamente simples a comunicação deles com pessoas de todas as partes do mundo, através do ensino efetivo original e inovador, capaz de fazer do aprendizado uma experiência única e prazerosa.</div>
+        <div class="card-title" id="nomeColegio"><b><?php echo $Instituicao->Nome; ?></b></div>
+        <div class="card-text more"><?php echo $Instituicao->Descricao; ?></div>
         <div class="d-flex justify-content-between align-items-center">
           <div class="btn-group">
             <button type="button" class="btn btn-sm btn-outline-secondary">+ Informações</button>
@@ -16,7 +26,7 @@
             <button type="button" class="btn btn-sm btn-outline-secondary">Editar</button>
           </div>
           <!-- distancia (IMPORTANTE) -->
-          <small class="text-muted">750m</small>
+          <small class="text-muted"><?php echo $Instituicao->Distancia; ?>m</small>
         </div>
       </div>
     </div>
