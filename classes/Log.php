@@ -17,12 +17,12 @@ class Log {
             $Conteudo .= 'REQUEST_TIME:' . var_export(date('d M Y H:i:s', $_SERVER['REQUEST_TIME'] ?? null), 1) . ' UTC' . PHP_EOL;
         }
         $Conteudo .= '<br>_____________________________________________________________________________________________________________________________<br><br>';
-        $Folder = $this->Folder . date('d-m-Y') . '/' . $FolderName . '.html';
+        $Folder = Log::$Folder . date('d-m-Y') . '/' . $FolderName . '.html';
         
-        if (!file_exists($this->Folder . date('d-m-Y')))
-            mkdir($this->Folder . date('d-m-Y'), 0777, true);
+        if (!file_exists(Log::$Folder . date('d-m-Y')))
+            mkdir(Log::$Folder . date('d-m-Y'), 0777, true);
         
-        file_put_contents($Folder, $Content, FILE_APPEND);
+        file_put_contents($Folder, $Conteudo, FILE_APPEND);
     }
 	
 }
