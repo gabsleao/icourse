@@ -211,10 +211,10 @@
 
 			<ul class="nav navbar-nav navbar-right">
 				<!-- numero de notificações (futuro) -->
-				<li><a href="#" class="notifications"><i class="fa fa-bell-o" aria-hidden="true"></i><span class="badge">1</span></a></li>
+				<li><a href="#" class="notifications"><i class="fa fa-bell-o" aria-hidden="true"></i><span class="badge"><?php echo isset($_SESSION['iduser']) ? 0 : 1; ?></span></a></li>
 
 				<!-- numero de mensagens (futuro) -->
-				<li><a href="#" class="messages"><i class="fa fa-envelope-o" aria-hidden="true"></i><span class="badge">10</span></a></li>
+				<li><a href="#" class="messages"><i class="fa fa-envelope-o" aria-hidden="true"></i><span class="badge"><?php echo isset($_SESSION['iduser']) ? 0 : 10; ?></span></a></li>
 
 				<!-- buscar session do user e popular essas infos dinamicamente (entrega futura) -->
 				<li class="dropdown">
