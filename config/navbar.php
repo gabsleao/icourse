@@ -210,26 +210,45 @@
 			</div>
 
 			<ul class="nav navbar-nav navbar-right">
-				<!-- numero de notificações (futuro) -->
-				<li><a href="#" class="notifications"><i class="fa fa-bell-o" aria-hidden="true"></i><span class="badge"><?php echo isset($_SESSION['iduser']) ? 0 : 1; ?></span></a></li>
+			<?php if(isset($_SESSION['iduser'])){ ?>
+					<!-- numero de notificações (futuro) -->
+					<li><a href="#" class="notifications"><i class="fa fa-bell-o" aria-hidden="true"></i><span class="badge">1</span></a></li>
 
-				<!-- numero de mensagens (futuro) -->
-				<li><a href="#" class="messages"><i class="fa fa-envelope-o" aria-hidden="true"></i><span class="badge"><?php echo isset($_SESSION['iduser']) ? 0 : 10; ?></span></a></li>
+					<!-- numero de mensagens (futuro) -->
+					<li><a href="#" class="messages"><i class="fa fa-envelope-o" aria-hidden="true"></i><span class="badge">10</span></a></li>
 
+			<?php } ?>
 				<!-- buscar session do user e popular essas infos dinamicamente (entrega futura) -->
 				<li class="dropdown">
 
-					<a href="#" data-toggle="dropdown" class="dropdown-toggle user-action"><img src="https://avatars.githubusercontent.com/u/39320521?v=4" class="avatar" alt="Avatar"> Gabriel Leão </a>
+					<a href="#" data-toggle="dropdown" class="dropdown-toggle user-action"><img src="<?php echo isset($_SESSION['iduser']) ? 'https://avatars.githubusercontent.com/u/39320521?v=4' : './assets/imagens/avatarguest.jpg'; ?>" class="avatar" alt="Avatar"><?php echo isset($_SESSION['iduser']) ? $_SESSION['nome'] : 'Visitante'; ?> </a>
+
+				<?php if(isset($_SESSION['iduser'])){ ?>
 					<ul class="dropdown-menu">
 						<li><a href="#"><i class="fa fa-user-o"></i> Perfil</a></li>
 						<li><a href="#"><i class="fa fa-sliders"></i> Configurações</a></li>
 						<li class="divider"></li>
 						<li><a href="#"><i class="material-icons">&#xE8AC;</i> Sair</a></li>
 					</ul>
+
+				<?php }else{ ?>
+					<ul class="dropdown-menu">
+						<li><a href="#"><i class="fa fa-sign-in"></i> Logar</a></li>
+						<li><a href="#" onClick="abrirFormRegistrar()"><i class="fa fa-user-o"></i> Registrar</a></li>
+					</ul>
+				<?php } ?>
 				</li>
 			</ul>
 		</div>
 	</nav>
 </body>
+
+<script>
+	function abrirFormRegistrar(){
+		//abrir a página com get
+		URL = encodeURI("./registrar.php");
+    	window.open(URL);
+	}
+</script>
 
 </html>

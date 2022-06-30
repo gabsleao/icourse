@@ -1,6 +1,8 @@
 <html lang="en">
 
-<?php include_once __DIR__ . '/config/header.php'; ?>
+<?php
+    include_once __DIR__ . '/config/header.php'; 
+?>
 
 <style>
     .morecontent span {

@@ -16,13 +16,16 @@
   <script type="text/javascript" charset="utf-8" src="./assets/js/jquery-360.js"></script>
   <script type="text/javascript" charset="utf-8" src="./assets/js/bootstrap.min.js"></script>
   <script type="text/javascript" charset="utf-8" src="./assets/js/main.js"></script>
+  <script type="text/javascript" charset="utf-8" src="./assets/js/autenticacao.js"></script>
 
 
 </head>
 
 <?php 
 require_once __DIR__ . '/autoload.php';
-include_once __DIR__ . '/navbar.php'; 
+
+if(basename($_SERVER['PHP_SELF']) != 'registrar.php')
+  include_once __DIR__ . '/navbar.php'; 
 
 ?>
 
