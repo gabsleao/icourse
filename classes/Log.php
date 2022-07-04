@@ -8,13 +8,13 @@ class Log {
     static function doLog($Conteudo, $FolderName, $MostrarBacktrace = 0){
         $Conteudo = /*'[' . date('d M Y H:i:s', time()) . ' UTC] - Content: <br>' .*/ var_export($Conteudo ?? null, 1) . '<br>'. '<br>';
         if($MostrarBacktrace){
-            $Conteudo .= '1. REQUEST:' . var_export($_REQUEST ?? null, 1) . 'PHP_EOL' .'PHP_EOL';
-            $Conteudo .= '2. SESSION:' . var_export($_SESSION ?? null, 1) . 'PHP_EOL' .'PHP_EOL';
-            $Conteudo .= '3. POST:' . var_export($_POST ?? null, 1) . 'PHP_EOL' .'PHP_EOL';
-            $Conteudo .= '4. GET:' . var_export($_GET ?? null, 1) . 'PHP_EOL' . 'PHP_EOL';
-            $Conteudo .= 'SERVER_NAME:' . var_export($_SERVER['SERVER_NAME'] ?? null, 1) . ' / HTTP_HOST: ' . var_export($_SERVER['HTTP_HOST'] ?? null, 1) . 'PHP_EOL' .'PHP_EOL';
-            $Conteudo .= 'HTTP_USER_AGENT:' . var_export($_SERVER['HTTP_USER_AGENT'] ?? null, 1) . 'PHP_EOL' . 'PHP_EOL';
-            $Conteudo .= 'REQUEST_TIME:' . var_export(date('d M Y H:i:s', $_SERVER['REQUEST_TIME'] ?? null), 1) . ' UTC' . 'PHP_EOL';
+            $Conteudo .= '<b>1. REQUEST: </b>' . var_export($_REQUEST ?? null, 1) . '<br><br>';
+            $Conteudo .= '<b>2. SESSION: </b>' . var_export($_SESSION ?? null, 1) . '<br><br>';
+            $Conteudo .= '<b>3. POST: </b>' . var_export($_POST ?? null, 1) . '<br><br>';
+            $Conteudo .= '<b>4. GET: </b>' . var_export($_GET ?? null, 1) . '<br><br>';
+            $Conteudo .= '<b>SERVER_NAME: </b>' . var_export($_SERVER['SERVER_NAME'] ?? null, 1) . '<b> / HTTP_HOST: </b>' . var_export($_SERVER['HTTP_HOST'] ?? null, 1) .'<br><br>';
+            $Conteudo .= '<b>HTTP_USER_AGENT: </b>' . var_export($_SERVER['HTTP_USER_AGENT'] ?? null, 1) . '<br><br>';
+            $Conteudo .= '<b>REQUEST_TIME: </b>' . var_export(date('d M Y H:i:s', $_SERVER['REQUEST_TIME'] ?? null), 1) . ' UTC' .  '<br>';
         }
         $Conteudo .= '<br>_____________________________________________________________________________________________________________________________<br><br>';
         $Folder = Log::$Folder . date('d-m-Y') . '/' . $FolderName . '.html';
