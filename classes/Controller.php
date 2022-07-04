@@ -17,7 +17,14 @@ class Controller{
             case 'registrar_usuario':
                 $ClasseUsuario = new Usuario();
                 return $ClasseUsuario->registrarUsuario($Data);
-                break;
+            break;
+
+            case 'salvar_instituicao':
+                $ClasseInstituicao = new Instituiçao();
+                Log::doLog('2. ' . var_export($Data, 1), 'salvar_LOGS');
+                return;
+                // return $ClasseInstituicao->salvarInstituicao();
+            break;
 
             default:
                 break;

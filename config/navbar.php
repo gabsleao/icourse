@@ -234,21 +234,13 @@
 				<?php }else{ ?>
 					<ul class="dropdown-menu">
 						<li><a href="#"><i class="fa fa-sign-in"></i> Logar</a></li>
-						<li><a href="#" onClick="abrirFormRegistrar()"><i class="fa fa-user-o"></i> Registrar</a></li>
+						<li><a href="#" data-toggle="modal" data-target="#modalRegistro"><i class="fa fa-user-o"></i> Registrar</a></li>
 					</ul>
-				<?php } ?>
+				<?php require_once __DIR__ . '/../modal_registrar.php'; 
+					} ?>
 				</li>
 			</ul>
 		</div>
 	</nav>
 </body>
-
-<script>
-	function abrirFormRegistrar(){
-		//abrir a página com get
-		URL = encodeURI("./registrar.php");
-    	window.open(URL);
-	}
-</script>
-
 </html>

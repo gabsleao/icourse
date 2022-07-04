@@ -10,6 +10,12 @@ switch($_POST['operacao']){
         echo json_encode(['resposta' => $Resposta]);
     break;
 
+    case 'salvar_instituicao':
+        $Resposta = new Controller($_POST);
+        echo json_encode(['resposta' => $Resposta]);
+    break;
+
+
     default:
         $Response = ['status' => 404, 'message' => 'Operação não encontrada!'];
         echo json_encode(['response' => $Response]);

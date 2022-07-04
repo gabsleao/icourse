@@ -6,7 +6,7 @@ class Log {
 	static $Folder = __DIR__ . '/../logs/';
 
     static function doLog($Conteudo, $FolderName, $MostrarBacktrace = 0){
-        $Conteudo = /*'[' . date('d M Y H:i:s', time()) . ' UTC] - Content: <br>' .*/ var_export($Conteudo ?? null, 1) . '<br>'. '<br>';
+        $Conteudo = var_export($Conteudo ?? null, 1) . '<br>'. '<br>';
         if($MostrarBacktrace){
             $Conteudo .= '<b>1. REQUEST: </b>' . var_export($_REQUEST ?? null, 1) . '<br><br>';
             $Conteudo .= '<b>2. SESSION: </b>' . var_export($_SESSION ?? null, 1) . '<br><br>';

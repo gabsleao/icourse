@@ -8,6 +8,7 @@ class Instituiçao{
     // public $ImgFolder = null;
     public $Distancia = 0;
     public $Endereço = null;
+    public $Tags = null;
 
     public function __construct($ID = null){
         if(!is_null($ID))
@@ -36,6 +37,54 @@ class Instituiçao{
         }
 
         return null;
+    }
+
+    public function getInstituicoes($Filtro = []){
+        $Retorno = [];
+
+        if(count($Filtro) == 0){
+            $Filtro['ativo'] = 1;
+        }
+
+        $Sql = 'SELECT id, nome, descricao, tags, ativo, data_criado, data_deletado FROM instituicao WHERE';
+
+        if(isset($Filtro['ativo'])){
+            $Sql .= ' ativo = ' . $Filtro['ativo'];
+        }
+
+        $Con = new Database('icourse');
+        $Statement = $Con->prepare($Sql);
+        $Resultado = $Statement->execute();
+        if(!$Resultado)
+            return [];
+
+        $Rows = $Statement->fetchAll();
+        foreach($Rows as $Row){
+            $Retorno[] = $Row;
+        }
+
+        return $Retorno;
+    }
+
+    public function salvarInstituicao(){
+        $Sql = 'INSERT INTO instituicao (nome, descricao, endereco, tags) VALUES (:nome, :descricao, :endereco, :tags)
+                ON DUPLICATE KEY UPDATE
+                nome = :nome,
+                descricao = :descricao,
+                endereco = :endereco,
+                tags = :tags';
+        $Con = new Database('icourse');
+        $Statement = $Con->prepare($Sql);
+        $Statement->bindValue(':nome', $this->Name);
+        $Statement->bindValue(':descricao', $this->Descricao);
+        $Statement->bindValue(':endereco', $this->Endereço);
+        $Statement->bindValue(':tags', $this->Tags);
+        $Resultado = $Statement->execute();
+        if(!$Resultado)
+            return null;
+
+        $Resposta = ['resposta' => 'YAY! Instituição salva com sucesso!'];
+        return $Resposta;
     }
     
 }

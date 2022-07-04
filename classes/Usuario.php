@@ -1,10 +1,11 @@
 <?php
 class Usuario{
-    public $id;
-    public $nome;
-    public $email;
-    public $senha;
-    public $tipo;
+    public $ID;
+    public $Nome;
+    public $Email;
+    public $Senha;
+    public $Tipo;
+    public $Ativo;
 
     public function _construct($ID = null){
         if(!is_null($ID)){
@@ -39,16 +40,9 @@ class Usuario{
         $Statement->bindValue(':email', $Data['email']);
         $Statement->bindValue(':senha', $Data['senha']);
         $Resultado = $Statement->execute();
-        if(!$Resultado)
-            return null;
-
-        $Rows = $Statement->fetchAll();
-        if(count($Rows) > 0){
-            $this->ID = $Rows[0]['id'];
-            $this->Nome = $Rows[0]['nome'];
-            $this->Descricao = $Rows[0]['descricao'];
-            $this->Endereço = $Rows[0]['endereco'];
-            return $this;
+        if(!$Resultado){
+            Log::doLog('SQL: ' . var_export($Sql, 1) . '<br>Resultado: ' . var_export($Resultado, 1), 'erro_registrarUsuario');
+            throw new Exception("Whoops! Algo deu errado, tente novamente.");
         }
     }
 }

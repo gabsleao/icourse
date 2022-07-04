@@ -1,19 +1,20 @@
 <?php
 
-$Instituicao = new Instituiçao(1);
+$InstituicaoClass = new Instituiçao();
 
-if(is_null($Instituicao)){
+if(is_null($InstituicaoClass)){
   include_once __DIR__ . '/not_found.html';
   exit;
 }
 
-?>
-<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+$Filtro = ['ativo' => 1];
+$Instituicoes = $InstituicaoClass->getInstituicoes($Filtro);
 
+echo '<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">';
+if(count($Instituicoes) > 0){ ?>
   <!-- cada coluna -->
   <div class="col">
-    <div class="card shadow-sm" onClick="openInstituicao(1);" style="cursor: pointer;">
-
+    <div class="card shadow-sm" onClick="openInstituicao(this);" style="cursor: pointer;">
 
       <img width="100%" height="125px" src="./assets/escolas/escola1.png">
       <div class="card-body">
@@ -31,52 +32,24 @@ if(is_null($Instituicao)){
       </div>
     </div>
   </div>
-
-
+<?php }else{ ?>
   <div class="col">
-    <div class="card shadow-sm" onClick="location.href='./instituicao_info.php';" style="cursor: pointer;">
-      <img width="100%" height="125px" src="./assets/escolas/escola2.jpg">
+    <div class="card shadow-sm">
 
+      <img width="100%" height="125px" src="./assets/imagens/criarInstituicao.jpg">
       <div class="card-body">
-        <p class="card-title"><b>Nome do Colégio 2</b></p>
-        <p class="card-text more">Nosso compromisso é contribuir para o fortalecimento intelectual e emocional dos nossos alunos, tornando extremamente simples a comunicação deles com pessoas de todas as partes do mundo, através do ensino efetivo original e inovador, capaz de fazer do aprendizado uma experiência única e prazerosa.</p>
+        <div class="card-title" id="nomeColegio"><b>Whoops! Parece que não temos instituições para mostrar por aqui</b></div>
+        <div class="card-text more">O que acha de adicionar alguma?</div><br>
         <div class="d-flex justify-content-between align-items-center">
           <div class="btn-group">
-            <button type="button" class="btn btn-sm btn-outline-secondary">+ Informações</button>
-            <!-- apenas quem tiver permissão (admin ou revisor) -->
-            <button type="button" class="btn btn-sm btn-outline-secondary">Editar</button>
+            <button type="button" data-toggle="modal" data-target="#modalCriarInstituicao" class="btn btn-sm btn-outline-secondary">+ Adicionar Instituição</button>
           </div>
-          <!-- distancia (IMPORTANTE) -->
-          <small class="text-muted">1.5km</small>
         </div>
       </div>
     </div>
   </div>
+<?php }
 
+echo '</div>';
 
-  <div class="col">
-    <div class="card shadow-sm" onClick="location.href='./instituicao_info.php';" style="cursor: pointer;">
-      <img width="100%" height="125px" src="./assets/escolas/escola3.jpg">
-
-      <div class="card-body">
-        <p class="card-title"><b>Nome do Colégio 3</b></p>
-        <p class="card-text more">Nosso compromisso é contribuir para o fortalecimento intelectual e emocional dos nossos alunos, tornando extremamente simples a comunicação deles com pessoas de todas as partes do mundo, através do ensino efetivo original e inovador, capaz de fazer do aprendizado uma experiência única e prazerosa.</p>
-        <div class="d-flex justify-content-between align-items-center">
-          <div class="btn-group">
-            <button type="button" class="btn btn-sm btn-outline-secondary">+ Informações</button>
-            <!-- apenas quem tiver permissão (admin ou revisor) -->
-            <button type="button" class="btn btn-sm btn-outline-secondary">Editar</button>
-          </div>
-          <!-- distancia (IMPORTANTE) -->
-          <small class="text-muted">3.5km</small>
-        </div>
-      </div>
-    </div>
-  </div>
-
-</div>
-
-<!-- TO-DO: melhorar esse botão e add função -->
-<div class="centralizado">
-  <button type="button" label="Ver mais">Ver mais</button>
-</div>
+require_once __DIR__ . '/modal_instituicao.php';
