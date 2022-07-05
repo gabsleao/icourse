@@ -67,7 +67,7 @@ class Instituiçao{
     }
 
     public function salvarInstituicao(){
-        $Sql = 'INSERT INTO instituicao (nome, descricao, endereco, tags) VALUES (:nome, :descricao, :endereco, :tags)
+        $Sql = 'INSERT INTO instituicao (nome, descricao, endereco, tags, data_criado) VALUES (:nome, :descricao, :endereco, :tags, :data_criado)
                 ON DUPLICATE KEY UPDATE
                 nome = :nome,
                 descricao = :descricao,
@@ -75,10 +75,11 @@ class Instituiçao{
                 tags = :tags';
         $Con = new Database('icourse');
         $Statement = $Con->prepare($Sql);
-        $Statement->bindValue(':nome', $this->Name);
+        $Statement->bindValue(':nome', $this->Nome);
         $Statement->bindValue(':descricao', $this->Descricao);
         $Statement->bindValue(':endereco', $this->Endereço);
         $Statement->bindValue(':tags', $this->Tags);
+        $Statement->bindValue(':data_criado', time());
         $Resultado = $Statement->execute();
         if(!$Resultado)
             return null;
