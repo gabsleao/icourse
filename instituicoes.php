@@ -47,7 +47,7 @@ if (count($Instituicoes) > 0) {
 
       <img width="100%" height="125px" src="./assets/imagens/criarInstituicao.jpg">
       <div class="card-body">
-        <div class="card-title" id="nomeColegio"><b>Whoops! Parece que não temos instituições para mostrar por aqui</b></div>
+        <div class="card-title" id="nomeColegio"><b>Whoops! Parece que não temos instituições para mostrar aqui... por enquanto (:</b></div>
         <?php
         if (isset($_SESSION['iduser'])) {
         ?>
