@@ -233,10 +233,12 @@
 
 				<?php }else{ ?>
 					<ul class="dropdown-menu">
-						<li><a href="#"><i class="fa fa-sign-in"></i> Logar</a></li>
+						<li><a href="#" data-toggle="modal" data-target="#modalLogin"><i class="fa fa-sign-in"></i> Logar</a></li>
 						<li><a href="#" data-toggle="modal" data-target="#modalRegistro"><i class="fa fa-user-o"></i> Registrar</a></li>
 					</ul>
-				<?php require_once __DIR__ . '/../modal_registrar.php'; 
+				<?php 
+				require_once __DIR__ . '/../modal_registrar.php';
+				require_once __DIR__ . '/../modal_login.php'; 
 					} ?>
 				</li>
 			</ul>
