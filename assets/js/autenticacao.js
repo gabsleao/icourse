@@ -2,10 +2,10 @@ function registrarUsuario(data){
     if(data == 'undefined')
         return alert ("Whoops! Algo deu errado.");
     
-    var nome = data.nome.value;
-    var email = data.email.value;
-    var senha1 = data.senha1.value;
-    var senha2 = data.senha2.value;
+    var nome = data.nome_aluno.value;
+    var email = data.email_aluno.value;
+    var senha1 = data.senha_aluno.value;
+    var senha2 = data.senha_aluno_confirmacao.value;
     var operacao = data.operacao.value;
 
     if(nome == 'undefined'){
@@ -37,23 +37,25 @@ function registrarUsuario(data){
         url  : "./classes/mapping.php",
         data : { nome : nome, email : email, senha1 : senha1, operacao : operacao },
         success: function(response){
-                console.log(1);
-                console.log(response);
-                var jsonResponse = JSON.parse(response).response;
-                console.log(jsonResponse);
-                alert(jsonResponse.message);
+            var jsonResponse = JSON.parse(response);
+            var Resposta = jsonResponse.resposta;
 
-                if(jsonResponse.status == 200)
-                    window.location.replace("./index.php");
-                
-                if(jsonResponse.status == 500)
-                    return alert("Por favor, verifique seu nome de usuário e senha.");
+            if(Resposta != "undefined"){
+                alert(Resposta);
+            }
+            console.log(Resposta);
+            
+            window.location.replace("./index.php");
         },
         error: function(response){
-            var jsonResponse = JSON.parse(response).response;
-            console.log(jsonResponse);
+            var jsonResponse = JSON.parse(response);
+            var Resposta = jsonResponse.resposta;
             
-            alert(jsonRespons.message);
+            if(Resposta != "undefined"){
+                alert(console.log(jsonResponse.resposta));
+            }
+
+            window.location.replace("./index.php");
         }
     });
     

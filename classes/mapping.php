@@ -7,12 +7,14 @@ if(!isset($_POST['operacao']))
 switch($_POST['operacao']){
     case 'salvar_instituicao':
     case 'registrar_usuario':
-        $Resposta = new Controller($_POST);
+        $Controller = new Controller();
+        $Resposta = $Controller->operation($_POST);
+        
         echo json_encode(['resposta' => $Resposta]);
     break;
 
     default:
-        $Response = ['status' => 404, 'message' => 'Operação não encontrada!'];
-        echo json_encode(['response' => $Response]);
+        $Resposta = 'Operação não encontrada!';
+        echo json_encode(['resposta' => $Resposta]);
     break;
 }

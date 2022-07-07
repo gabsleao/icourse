@@ -14,6 +14,28 @@ class Usuario{
         }
     }
 
+    function emailJaCadastrado($Email){
+        if(!isset($Email)){
+            return;
+        }
+
+        $Sql = "SELECT email FROM usuarios WHERE email = :email";
+        $Con = new Database('icourse');
+        $Statement = $Con->prepare($Sql);
+        $Statement->bindValue(':email', $Email);
+        $Resultado = $Statement->execute();
+        if(!$Resultado){
+            return false;
+        }
+
+        if($Statement->rowCount() > 0){
+            return true;
+        }
+
+        return false;
+
+    }
+
     public function registrarUsuario($Data = null){
         if(is_null($Data)){
             return;
@@ -31,6 +53,11 @@ class Usuario{
             throw new Exception("Senha nao setado!");
         }
 
+        if($this->emailJaCadastrado($Data['email'])){
+            Log::doLog('retornando email cadastrado', 'teste');
+            return "Email já cadastrado.";
+        }
+
         
 
         $Sql = 'INSERT INTO usuarios (nome, email, senha) VALUES (:nome, :email, :senha)';
@@ -38,11 +65,12 @@ class Usuario{
         $Statement = $Con->prepare($Sql);
         $Statement->bindValue(':nome', $Data['nome']);
         $Statement->bindValue(':email', $Data['email']);
-        $Statement->bindValue(':senha', $Data['senha']);
+        $Statement->bindValue(':senha', $Data['senha1']);
         $Resultado = $Statement->execute();
         if(!$Resultado){
             Log::doLog('SQL: ' . var_export($Sql, 1) . '<br>Resultado: ' . var_export($Resultado, 1), 'erro_registrarUsuario');
             throw new Exception("Whoops! Algo deu errado, tente novamente.");
         }
+        return "Usuário criado com sucesso!";
     }
 }

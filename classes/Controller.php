@@ -2,7 +2,7 @@
 
 class Controller{
 
-    function __construct($Data = null){
+    function operation($Data = null){
         if(is_null($Data)){
             Log::doLog('[1]. ' . var_export($Data, 1), 'Exception_Controller', 1);
             throw new Exception("Whoops! Data não setada");
@@ -16,7 +16,9 @@ class Controller{
         switch($Data['operacao']){
             case 'registrar_usuario':
                 $ClasseUsuario = new Usuario();
-                return $ClasseUsuario->registrarUsuario($Data);
+                $Retorno = $ClasseUsuario->registrarUsuario($Data);
+                
+                return $Retorno;
             break;
 
             case 'salvar_instituicao':

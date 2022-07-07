@@ -242,5 +242,22 @@
 			</ul>
 		</div>
 	</nav>
+
+<script>
+function removeFade() {
+    console.log('running');
+    const body = document.querySelector('body');
+    
+	if(body.classList.contains('modal-open')){
+		$('body').removeClass('modal-open');
+		$('.modal-backdrop').remove();
+    }
+}
+
+$(function() {
+    //gambi pra remover o fade
+    setInterval(removeFade, 1000);
+});
+</script>
 </body>
 </html>

@@ -8,6 +8,7 @@
             <div class="modal-body">
                 <div class="col-lg-12">
                     <form onsubmit="registrarUsuario(this)">
+                        <input type="hidden" value="registrar_usuario" id="operacao" name="operacao">
                         <div class="row g-3">
                             <div class="col-12">
                                 <label for="nome_aluno" class="form-label">Nome</label><span style="color: red;"> *</span>
@@ -39,17 +40,3 @@
         </div>
     </div>
 </div>
-<script>
-    $(function(){
-        setInterval(removeFade, 1000);
-    });
-
-    function removeFade() {
-        const body = document.querySelector('body');
-
-        if(body.classList.contains('modal-open')){
-            $('body').removeClass('modal-open');
-            $('.modal-backdrop').remove();
-        }
-    }
-</script>
