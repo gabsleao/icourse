@@ -39,9 +39,17 @@
         </div>
     </div>
 </div>
-
 <script>
-    $(document).ready(function(){
-        $('.modal-backdrop').remove('modal-backdrop');
+    $(function(){
+        setInterval(removeFade, 1000);
     });
+
+    function removeFade() {
+        const body = document.querySelector('body');
+
+        if(body.classList.contains('modal-open')){
+            $('body').removeClass('modal-open');
+            $('.modal-backdrop').remove();
+        }
+    }
 </script>
