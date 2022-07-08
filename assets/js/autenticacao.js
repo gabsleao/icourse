@@ -61,7 +61,6 @@ function registrarUsuario(data){
 }
 
 function logarUsuario(data){
-    console.log(1);
     if(data == 'undefined')
         return alert ("Whoops! Algo deu errado.");
     
@@ -107,6 +106,43 @@ function logarUsuario(data){
             window.location.replace("./index.php");
         }
     });
+}
+
+function logout(data){
+    if(data == 'undefined')
+        return alert ("Whoops! Algo deu errado.");
     
+    var operacao = data.operacao.value;
+
+    if(operacao == 'undefined'){
+        return alert("Whoops! Algo deu errado.");
+    }
+
+    $.ajax({
+        type : "POST",
+        url  : "./classes/mapping.php",
+        data : { operacao : operacao },
+        success: function(response){
+            var jsonResponse = JSON.parse(response);
+            var Resposta = jsonResponse.resposta;
+
+            if(Resposta != "undefined"){
+                alert(Resposta);
+            }
+            console.log(Resposta);
+            
+            window.location.replace("./index.php");
+        },
+        error: function(response){
+            var jsonResponse = JSON.parse(response);
+            var Resposta = jsonResponse.resposta;
+            
+            if(Resposta != "undefined"){
+                alert(console.log(jsonResponse.resposta));
+            }
+
+            window.location.replace("./index.php");
+        }
+    });
 
 }

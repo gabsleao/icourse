@@ -14,6 +14,12 @@ class Controller{
         }
 
         switch($Data['operacao']){
+            case 'logout_usuario':
+                $Session = new Session();
+                $Session->destruirSession();
+                
+                return "Usuário deslogado com sucesso!";
+            break;
             case 'logar_usuario':
                 $ClasseUsuario = new Usuario();
                 $Retorno = $ClasseUsuario->logarUsuario($Data);

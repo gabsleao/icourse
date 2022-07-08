@@ -68,3 +68,6 @@ if (count($Instituicoes) > 0) {
 echo '</div>';
 
 require_once __DIR__ . '/modal_instituicao.php';
+require_once __DIR__ . '/modal_registrar.php';
+require_once __DIR__ . '/modal_login.php';
+require_once __DIR__ . '/modal_logout.php';

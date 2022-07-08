@@ -228,7 +228,7 @@
 						<li><a href="#"><i class="fa fa-user-o"></i> Perfil</a></li>
 						<li><a href="#"><i class="fa fa-sliders"></i> Configurações</a></li>
 						<li class="divider"></li>
-						<li><a href="#"><i class="material-icons">&#xE8AC;</i> Sair</a></li>
+						<li><a href="#" data-toggle="modal" data-target="#modalLogout"><i class="material-icons">&#xE8AC;</i> Sair</a></li>
 					</ul>
 
 				<?php }else{ ?>
@@ -236,30 +236,12 @@
 						<li><a href="#" data-toggle="modal" data-target="#modalLogin"><i class="fa fa-sign-in"></i> Logar</a></li>
 						<li><a href="#" data-toggle="modal" data-target="#modalRegistro"><i class="fa fa-user-o"></i> Registrar</a></li>
 					</ul>
-				<?php 
-				require_once __DIR__ . '/../modal_registrar.php';
-				require_once __DIR__ . '/../modal_login.php';
+				<?php
 					} ?>
 				</li>
 			</ul>
 		</div>
 	</nav>
 
-<script>
-function removeFade() {
-    console.log('running');
-    const body = document.querySelector('body');
-    
-	if(body.classList.contains('modal-open')){
-		$('body').removeClass('modal-open');
-		$('.modal-backdrop').remove();
-    }
-}
-
-$(function() {
-    //gambi pra remover o fade
-    setInterval(removeFade, 1000);
-});
-</script>
 </body>
 </html>
