@@ -2,8 +2,8 @@ CREATE DATABASE icourse;
 
 CREATE TABLE icourse.usuarios ( id INT NOT NULL AUTO_INCREMENT,
                                 nome VARCHAR(255) NOT NULL,
-                                email VARCHAR(255) NOT NULL,
-                                senha VARCHAR(255) NOT NULL,
+                                email varbinary(9999) NOT NULL,
+                                senha varbinary(9999) NOT NULL,
                                 tipo ENUM('ADMIN', 'ENDUSER') NOT NULL DEFAULT 'ENDUSER',
                                 ativo BOOLEAN NOT NULL DEFAULT 1,
                                 PRIMARY KEY (id));
