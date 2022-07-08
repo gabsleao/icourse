@@ -24,6 +24,7 @@
 
 <?php 
 require_once __DIR__ . '/autoload.php';
+new Session();
 
 if(basename($_SERVER['PHP_SELF']) != 'registrar.php')
   include_once __DIR__ . '/navbar.php'; 

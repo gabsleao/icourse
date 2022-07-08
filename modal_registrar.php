@@ -22,12 +22,12 @@
 
                             <div class="col-12">
                                 <label for="senha_aluno" class="form-label">Senha</label><span style="color: red;"> *</span>
-                                <input type="password" class="form-control" id="senha_aluno" placeholder="********" required>
+                                <input type="password" class="form-control" id="senha_aluno" placeholder="********" required minlength="8">
                             </div>
 
                             <div class="col-12">
                                 <label for="senha_aluno_confirmacao" class="form-label">Confirmar Senha</label><span style="color: red;"> *</span>
-                                <input type="password" class="form-control" id="senha_aluno_confirmacao" placeholder="********" required>
+                                <input type="password" class="form-control" id="senha_aluno_confirmacao" placeholder="********" required minlength="8">
                             </div>
                         </div>
                 </div>

@@ -11,12 +11,12 @@
                         <input type="hidden" value="logar_usuario" id="operacao" name="operacao">
                         <div class="row g-3">
                             <div class="col-12">
-                                <label for="email_aluno" class="form-label">E-mail</label><span style="color: red;"> *</span>
+                                <label for="email_aluno" class="form-label">E-mail</label>
                                 <input type="text" class="form-control" id="email_aluno" placeholder="aluno@exemplo.com..." required>
                             </div>
 
                             <div class="col-12">
-                                <label for="senha_aluno" class="form-label">Senha</label><span style="color: red;"> *</span>
+                                <label for="senha_aluno" class="form-label">Senha</label>
                                 <input type="password" class="form-control" id="senha_aluno" placeholder="********" required>
                             </div>
                         </div>
@@ -24,7 +24,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-                <button type="submit" class="btn btn-primary">Criar</button>
+                <button type="submit" class="btn btn-primary">Logar</button>
             </div>
             </form>
         </div>

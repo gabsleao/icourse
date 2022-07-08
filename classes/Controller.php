@@ -14,6 +14,12 @@ class Controller{
         }
 
         switch($Data['operacao']){
+            case 'logar_usuario':
+                $ClasseUsuario = new Usuario();
+                $Retorno = $ClasseUsuario->logarUsuario($Data);
+
+                return $Retorno;
+            break;
             case 'registrar_usuario':
                 $ClasseUsuario = new Usuario();
                 $Retorno = $ClasseUsuario->registrarUsuario($Data);

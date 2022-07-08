@@ -238,7 +238,7 @@
 					</ul>
 				<?php 
 				require_once __DIR__ . '/../modal_registrar.php';
-				require_once __DIR__ . '/../modal_login.php'; 
+				require_once __DIR__ . '/../modal_login.php';
 					} ?>
 				</li>
 			</ul>
