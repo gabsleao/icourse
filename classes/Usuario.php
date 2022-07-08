@@ -7,12 +7,12 @@ class Usuario{
     public $Tipo = null;
     public $Ativo = null;
 
-    public function _construct($ID = null){
-        if(!is_null($ID)){
-            $Usuario = $this->getUsuario($ID);
-            return $Usuario;
-        }
-    }
+    // public function _construct($ID = null){
+    //     if(!is_null($ID)){
+    //         $Usuario = $this->getUsuario($ID);
+    //         return $Usuario;
+    //     }
+    // }
 
     public function logarUsuario($Data = null){
         if(is_null($Data)){
@@ -50,11 +50,12 @@ class Usuario{
         }
 
         $Row = $Statement->fetch();
-        Log::doLog(var_export($Row, 1), 'Row');
+
         if(isset($Row['id'])){
             $Session = new Session();
             $Session->setSession($Row);
         }
+        
         return "Usuario logado com sucesso!";
     }
 

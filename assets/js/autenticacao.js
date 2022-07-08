@@ -101,7 +101,7 @@ function logarUsuario(data){
             var Resposta = jsonResponse.resposta;
             
             if(Resposta != "undefined"){
-                alert(console.log(jsonResponse.resposta));
+                alert(Resposta);
             }
 
             window.location.replace("./index.php");
