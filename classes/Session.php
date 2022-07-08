@@ -13,7 +13,10 @@ class Session{
     }
 
     public function destruirSession(){
-        session_start();
+        if(session_status() === PHP_SESSION_NONE){
+           session_start(); 
+        }
+        
         $_SESSION = array();
 
         // Se é preciso matar a sessão, então os cookies de sessão também devem ser apagados.
@@ -46,18 +49,12 @@ class Session{
         if(isset($User['id'])){
             if(!$this->sessionAtiva()){
                 $this->iniciarSession();
-                $_SESSION['iduser'] = $User['id'];
-                $_SESSION['nome'] = $User['nome'];
-                $_SESSION['tipo'] = $User['tipo'];
-                $_SESSION['email'] = $User['email'];
-            }else{
-                $this->destruirSession();
-                $this->iniciarSession();
-                $_SESSION['iduser'] = $User['id'];
-                $_SESSION['nome'] = $User['nome'];
-                $_SESSION['tipo'] = $User['tipo'];
-                $_SESSION['email'] = $User['email'];
             }
+            
+            $_SESSION['iduser'] = $User['id'];
+            $_SESSION['nome'] = $User['nome'];
+            $_SESSION['tipo'] = $User['tipo'];
+            $_SESSION['email'] = $User['email'];
         }
     }
 }

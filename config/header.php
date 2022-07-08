@@ -26,6 +26,12 @@
 require_once __DIR__ . '/autoload.php';
 new Session();
 
+require_once __DIR__ . '/../modal_instituicao.php';
+require_once __DIR__ . '/../modal_curso.php';
+require_once __DIR__ . '/../modal_registrar.php';
+require_once __DIR__ . '/../modal_login.php';
+require_once __DIR__ . '/../modal_logout.php';
+
 if(basename($_SERVER['PHP_SELF']) != 'registrar.php')
   include_once __DIR__ . '/navbar.php'; 
 

@@ -15,7 +15,7 @@ if (count($Instituicoes) > 0) {
   foreach ($Instituicoes as $Instituicao) { ?>
     <!-- cada coluna -->
     <div class="col">
-      <div class="card shadow-sm" onClick="openInstituicao(this);" style="cursor: pointer;">
+      <div class="card shadow-sm" onClick="openInstituicao(<?php echo $Instituicao['id']; ?>);" style="cursor: pointer;">
 
         <img width="100%" height="125px" src="./assets/escolas/escola1.png">
         <div class="card-body">
@@ -27,14 +27,19 @@ if (count($Instituicoes) > 0) {
             ?>
               <div class="btn-group">
                 <button type="button" class="btn btn-sm btn-outline-secondary">+ Informações</button>
-                <!-- apenas quem tiver permissão (admin ou revisor) -->
-                <button type="button" class="btn btn-sm btn-outline-secondary">Editar</button>
+                <?php
+                if (isset($_SESSION['iduser']) && $_SESSION['tipo'] == 'ADMIN') { ?>
+                  <button type="button" class="btn btn-sm btn-outline-secondary">Editar</button>
+                <?php
+                }
+                ?>
               </div>
             <?php
             }
             ?>
             <!-- distancia (IMPORTANTE) -->
-            <small class="text-muted"><?php echo 0 //$Instituicao->Distancia; ?>m</small>
+            <small class="text-muted"><?php echo 0 //$Instituicao->Distancia; 
+                                      ?>m</small>
           </div>
         </div>
       </div>
@@ -47,9 +52,9 @@ if (count($Instituicoes) > 0) {
 
       <img width="100%" height="125px" src="./assets/imagens/criarInstituicao.jpg">
       <div class="card-body">
-        <div class="card-title" id="nomeColegio"><b>Whoops! Parece que não temos instituições para mostrar aqui... por enquanto (:</b></div>
+        <div class="card-title"><b>Whoops! Parece que não temos instituições para mostrar aqui... por enquanto (:</b></div>
         <?php
-        if (isset($_SESSION['iduser'])) {
+        if (isset($_SESSION['iduser']) && $_SESSION['tipo'] == 'ADMIN') {
         ?>
           <div class="card-text more">O que acha de adicionar alguma?</div><br>
           <div class="d-flex justify-content-between align-items-center">
@@ -64,10 +69,21 @@ if (count($Instituicoes) > 0) {
     </div>
   </div>
 <?php }
+if (count($Instituicoes) > 0 && isset($_SESSION['iduser']) && $_SESSION['tipo'] == 'ADMIN') {
+?>
 
-echo '</div>';
+  <div class="col">
+    <div class="card shadow-sm">
 
-require_once __DIR__ . '/modal_instituicao.php';
-require_once __DIR__ . '/modal_registrar.php';
-require_once __DIR__ . '/modal_login.php';
-require_once __DIR__ . '/modal_logout.php';
+      <img width="100%" height="125px" src="./assets/imagens/criarInstituicao.jpg">
+      <div class="card-body">
+        <div class="d-flex justify-content-between align-items-center">
+          <div class="btn-group">
+            <button type="button" data-toggle="modal" data-target="#modalCriarInstituicao" class="btn btn-sm btn-outline-secondary">+ Adicionar Instituição</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<?php } ?>
+</div>

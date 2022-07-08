@@ -1,7 +1,7 @@
 <html lang="en">
 
 <?php
-    include_once __DIR__ . '/config/header.php'; 
+    include_once __DIR__ . '/config/header.php';
 ?>
 
 <style>

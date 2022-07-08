@@ -11,7 +11,7 @@ switch($_POST['operacao']){
     case 'logout_usuario':
         $Controller = new Controller();
         $Resposta = $Controller->operation($_POST);
-        
+        Log::doLog(var_export(json_encode(['resposta' => $Resposta]), 1), "Resposta");
         echo json_encode(['resposta' => $Resposta]);
     break;
 

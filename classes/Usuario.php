@@ -28,11 +28,11 @@ class Usuario{
         }
 
         if(!$this->emailValido($Data['email'])){
-            return "Email não é valido.";
+            return "Email invalido.";
         }
 
         if(!$this->emailJaCadastrado($Data['email'])){
-            return "Esse email não está cadastrado.";
+            return "Esse email nao esta cadastrado.";
         }
 
         $Sql = 'SELECT id, nome, AES_DECRYPT(email, "' . Encrypt::$KEY . '") as email, tipo, ativo FROM usuarios WHERE email = AES_ENCRYPT(:email, "' . Encrypt::$KEY . '") AND senha = AES_ENCRYPT(:senha, "' . Encrypt::$KEY . '") AND ativo = 1';
@@ -55,7 +55,7 @@ class Usuario{
             $Session = new Session();
             $Session->setSession($Row);
         }
-        return "Usuário logado com sucesso!";
+        return "Usuario logado com sucesso!";
     }
 
     function emailJaCadastrado($Email){
@@ -109,11 +109,11 @@ class Usuario{
         }
 
         if($this->emailJaCadastrado($Data['email'])){
-            return "Email já cadastrado.";
+            return "Email ja cadastrado.";
         }
 
         if(!$this->emailValido($Data['email'])){
-            return "Email não é valido.";
+            return "Email invalido.";
         }
         
 
@@ -128,6 +128,6 @@ class Usuario{
             Log::doLog('SQL: ' . var_export($Sql, 1) . '<br>Resultado: ' . var_export($Resultado, 1), 'erro_registrarUsuario');
             throw new Exception("Whoops! Algo deu errado, tente novamente.");
         }
-        return "Usuário criado com sucesso!";
+        return "Usuario criado com sucesso!";
     }
 }

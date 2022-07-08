@@ -1,25 +1,24 @@
 <?php
 
-class Instituiçao{
+class Curso{
 
     public $ID = null;
     public $Nome = null;
     public $Descricao = null;
-    // public $ImgFolder = null;
-    public $Distancia = 0;
-    public $Endereço = null;
-    public $Tags = null;
+    public $Tags = [];
+    public $IDInstituicao = null;
+    public $DataCriacao = null;
 
     public function __construct($ID = null){
         if(!is_null($ID))
-            return $this->getInstituicao($ID);
+            return $this->getCurso($ID);
     }
 
-    public function getInstituicao($ID = null){
+    public function getCurso($ID = null){
         if(is_null($ID))
             return null;
 
-        $Sql = 'SELECT id, nome, descricao, endereco FROM instituicao WHERE id = :id';
+        $Sql = 'SELECT id, nome, descricao, tags, id_instituicao FROM cursos WHERE id = :id';
         $Con = new Database('icourse');
         $Statement = $Con->prepare($Sql);
         $Statement->bindValue(':id', $ID);
@@ -27,46 +26,20 @@ class Instituiçao{
         if(!$Resultado)
             return null;
 
-        $Rows = $Statement->fetchAll();
-        if(count($Rows) > 0){
-            $this->ID = $Rows[0]['id'];
-            $this->Nome = $Rows[0]['nome'];
-            $this->Descricao = $Rows[0]['descricao'];
-            $this->Endereço = $Rows[0]['endereco'];
+        $Row = $Statement->fetch();
+        if(count($Row) > 0){
+            $this->ID = $Row['id'];
+            $this->Nome = $Row['nome'];
+            $this->Descricao = $Row['descricao'];
+            $this->Tags = $Row['tags'];
+            $this->IDInstituicao = $Row['id_instituicao'];
             return $this;
         }
 
         return null;
     }
 
-    public function getInstituicoes($Filtro = []){
-        $Retorno = [];
-
-        if(count($Filtro) == 0){
-            $Filtro['ativo'] = 1;
-        }
-
-        $Sql = 'SELECT id, nome, descricao, tags, ativo, data_criado, data_deletado FROM instituicao WHERE';
-
-        if(isset($Filtro['ativo'])){
-            $Sql .= ' ativo = ' . $Filtro['ativo'];
-        }
-
-        $Con = new Database('icourse');
-        $Statement = $Con->prepare($Sql);
-        $Resultado = $Statement->execute();
-        if(!$Resultado)
-            return [];
-
-        $Rows = $Statement->fetchAll();
-        foreach($Rows as $Row){
-            $Retorno[] = $Row;
-        }
-
-        return $Retorno;
-    }
-
-    public function getCursosInstituicao($Filtro = []){
+    public function getCursos($Filtro = []){
         $Retorno = [];
 
         if(count($Filtro) == 0){
@@ -79,15 +52,8 @@ class Instituiçao{
             $Sql .= ' ativo = ' . $Filtro['ativo'];
         }
 
-        if(isset($Filtro['IDInstituicao'])){
-            $Sql .= ' AND id_instituicao = :id_instituicao';
-        }
-
         $Con = new Database('icourse');
         $Statement = $Con->prepare($Sql);
-        if(isset($Filtro['IDInstituicao'])){
-            $Statement->bindValue(':id_instituicao', $Filtro['IDInstituicao']);
-        }
         $Resultado = $Statement->execute();
         if(!$Resultado)
             return [];

@@ -37,22 +37,23 @@ function registrarUsuario(data){
         url  : "./classes/mapping.php",
         data : { nome : nome, email : email, senha1 : senha1, operacao : operacao },
         success: function(response){
+            console.log('success');
             var jsonResponse = JSON.parse(response);
             var Resposta = jsonResponse.resposta;
-
+            
             if(Resposta != "undefined"){
                 alert(Resposta);
             }
-            console.log(Resposta);
             
             window.location.replace("./index.php");
         },
         error: function(response){
+            console.log('error');
             var jsonResponse = JSON.parse(response);
             var Resposta = jsonResponse.resposta;
             
             if(Resposta != "undefined"){
-                alert(console.log(jsonResponse.resposta));
+                alert(jsonResponse.resposta);
             }
 
             window.location.replace("./index.php");

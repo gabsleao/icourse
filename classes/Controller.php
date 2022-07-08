@@ -17,8 +17,8 @@ class Controller{
             case 'logout_usuario':
                 $Session = new Session();
                 $Session->destruirSession();
-                
-                return "Usuário deslogado com sucesso!";
+
+                return "Usuario deslogado com sucesso!";
             break;
             case 'logar_usuario':
                 $ClasseUsuario = new Usuario();
